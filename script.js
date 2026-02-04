@@ -1,38 +1,28 @@
 const getSumBtn = document.createElement("button");
-getSumBtn.append("Get Total Price");
+getSumBtn.innerText = "Get Total Price";
 document.body.appendChild(getSumBtn);
 
 const getSum = () => {
-//Add your code here
-	const getSum = () => {
-  // select all price cells
-  const prices = document.querySelectorAll(".price");
+  const prices = document.querySelectorAll(".prices");
 
   let total = 0;
-  prices.forEach(price => {
-    total += Number(price.innerText);
+  prices.forEach(p => {
+    total += Number(p.innerText);
   });
 
-  // get table
   const table = document.querySelector("table");
 
-  // prevent adding total row multiple times
-  if (document.querySelector(".total-row")) return;
+  if (document.querySelector("#ans")) return;
 
-  // create new row
   const tr = document.createElement("tr");
-  tr.classList.add("total-row");
-
   const td = document.createElement("td");
+
   td.colSpan = 2;
-  td.innerText = `Total Price: Rs ${total}`;
+  td.id = "ans";
+  td.innerText = total;
 
   tr.appendChild(td);
   table.appendChild(tr);
 };
 
-  
-};
-
 getSumBtn.addEventListener("click", getSum);
-
